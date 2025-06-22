@@ -1,0 +1,25 @@
+﻿{
+  "project": {
+    "name": "SleepFree",
+    "version": "1.0.0",
+    "description": "Revolutionary Sleep-Based Smoking Cessation System",
+    "created": "2025-06-01",
+    "status": "In Development"
+  },
+  "team": {
+    "size": 8,
+    "roles": ["Android Developer", "Backend Engineer", "UI/UX Designer", "QA Engineer", "Hypnotherapy Consultant", "Project Manager", "ML Engineer", "Data Scientist"]
+  },
+  "technology": {
+    "mobile": "Android (Kotlin)",
+    "backend": "Firebase / Google Cloud Platform",
+    "database": "Firestore / PostgreSQL",
+    "ml": "TensorFlow Lite / Vertex AI",
+    "integration": "Samsung Health SDK"
+  },
+  "timeline": {
+    "mvp": "4 months",
+    "beta": "8 months", 
+    "launch": "12 months"
+  }
+}

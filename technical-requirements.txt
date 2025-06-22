@@ -1,0 +1,436 @@
+# SleepFree - Technical Requirements Document
+
+## Development Environment Setup
+
+### Required Software
+- **Android Studio** (Latest stable version)
+- **Samsung Galaxy Watch Studio** (For watch face development)
+- **Wear OS Emulator** (For testing without physical device)
+- **Firebase CLI** (For backend deployment)
+- **Git** (Version control)
+- **Postman** (API testing)
+
+### Required Hardware for Development
+- **Samsung Galaxy Watch 4+** (Primary testing device)
+- **Samsung Galaxy Phone** (S20+ or newer recommended)
+- **Bone Conduction Headphones** (AfterShokz/Shokz or similar)
+- **Multiple Android devices** (For compatibility testing)
+
+## API Integrations Required
+
+### Samsung Health SDK
+```
+Implementation: com.samsung.android.sdk:healthdata:1.5.0
+Required Permissions:
+- com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY
+- com.samsung.android.providers.context.permission.READ_USE_APP_FEATURE_SURVEY
+- com.samsung.health.permission.READ_SLEEP
+- com.samsung.health.permission.READ_HEART_RATE
+
+Key Classes:
+- HealthDataStore
+- HealthConnectionManager  
+- SleepDataType
+- HeartRateDataType
+```
+
+### Android Sleep API
+```
+Implementation: androidx.health.connect:connect-client:1.0.0-alpha11
+Required Permissions:
+- android.permission.health.READ_SLEEP
+- android.permission.health.WRITE_SLEEP
+
+Key Classes:
+- HealthConnectClient
+- SleepSessionRecord
+- SleepStageRecord
+```
+
+### Firebase Services
+```
+Required Services:
+- Firebase Authentication
+- Cloud Firestore
+- Cloud Functions
+- Firebase Analytics
+- Firebase Crashlytics
+- Cloud Storage
+- Cloud Messaging (FCM)
+
+Configuration Files Needed:
+- google-services.json (Android)
+- GoogleService-Info.plist (iOS future)
+```
+
+### TensorFlow Lite
+```
+Implementation: org.tensorflow:tensorflow-lite:2.13.0
+Model Requirements:
+- Sleep stage classification model
+- Craving prediction model  
+- Personalization optimization model
+- Voice stress analysis model
+
+Model Input Requirements:
+- Heart rate variability data
+- Movement sensor data
+- Historical craving patterns
+- User behavior metrics
+```
+
+## Database Schema
+
+### Local Room Database
+```sql
+-- Users Table
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY,
+    user_id TEXT UNIQUE,
+    created_at TIMESTAMP,
+    quit_date TIMESTAMP,
+    cigarettes_per_day INTEGER,
+    years_smoking INTEGER,
+    trigger_locations TEXT,
+    personality_profile TEXT
+);
+
+-- Sleep Sessions Table  
+CREATE TABLE sleep_sessions (
+    id INTEGER PRIMARY KEY,
+    user_id TEXT,
+    start_time TIMESTAMP,
+    end_time TIMESTAMP,
+    sleep_stages TEXT, -- JSON array
+    suggestions_delivered INTEGER,
+    quality_score REAL,
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
+);
+
+-- Suggestions Table
+CREATE TABLE suggestions (
+    id INTEGER PRIMARY KEY,
+    user_id TEXT,
+    content TEXT,
+    delivery_time TIMESTAMP,
+    sleep_stage TEXT,
+    effectiveness_score REAL,
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
+);
+
+-- Cravings Table
+CREATE TABLE cravings (
+    id INTEGER PRIMARY KEY,
+    user_id TEXT,
+    intensity INTEGER,
+    trigger_type TEXT,
+    location TEXT,
+    timestamp TIMESTAMP,
+    intervention_used TEXT,
+    outcome TEXT,
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
+);
+```
+
+### Cloud Firestore Schema
+```javascript
+// Users Collection
+users/{userId} {
+    profile: {
+        name: string,
+        email: string,
+        createdAt: timestamp,
+        quitDate: timestamp,
+        smokingHistory: object
+    },
+    settings: {
+        suggestionVolume: number,
+        emergencyContacts: array,
+        notificationPreferences: object
+    },
+    subscription: {
+        tier: string,
+        expiresAt: timestamp,
+        features: array
+    }
+}
+
+// Sleep Data Collection
+sleepData/{userId}/sessions/{sessionId} {
+    startTime: timestamp,
+    endTime: timestamp,
+    stages: array,
+    suggestions: array,
+    biometrics: object
+}
+
+// ML Models Collection
+models/{modelType} {
+    version: string,
+    downloadUrl: string,
+    accuracy: number,
+    lastUpdated: timestamp
+}
+```
+
+## Core Algorithm Specifications
+
+### Sleep Stage Detection
+```kotlin
+data class SleepStage(
+    val stage: StageType, // LIGHT, DEEP, REM, AWAKE
+    val startTime: Long,
+    val endTime: Long,
+    val confidence: Float
+)
+
+enum class StageType {
+    LIGHT_SLEEP,    // Optimal for suggestions
+    DEEP_SLEEP,     // No interruptions
+    REM_SLEEP,      // Protected zone
+    AWAKE           // Emergency response only
+}
+
+class SleepStageDetector {
+    fun detectOptimalWindow(): SuggestionWindow?
+    fun isRoomForSuggestion(): Boolean
+    fun calculateConfidence(): Float
+}
+```
+
+### Suggestion Timing Algorithm
+```kotlin
+class SuggestionScheduler {
+    fun calculateOptimalDeliveryTime(
+        sleepStages: List<SleepStage>,
+        userProfile: UserProfile,
+        previousSessions: List<SleepSession>
+    ): Long?
+    
+    fun shouldDeliverSuggestion(
+        currentStage: SleepStage,
+        timeInStage: Duration,
+        suggestionQueue: Queue<Suggestion>
+    ): Boolean
+}
+```
+
+### Personalization Engine
+```kotlin
+data class PersonalizationModel(
+    val learningStyle: LearningStyle, // VISUAL, AUDITORY, KINESTHETIC
+    val responsePatterns: Map<String, Float>,
+    val triggerProfile: TriggerProfile,
+    val optimalTimings: List<TimeWindow>
+)
+
+class PersonalizationEngine {
+    fun generateSuggestion(context: UserContext): Suggestion
+    fun updateModel(feedback: UserFeedback)
+    fun predictCraving(currentState: BiometricState): CravingProbability
+}
+```
+
+## Audio System Requirements
+
+### Audio Delivery Specifications
+```kotlin
+class AudioDeliverySystem {
+    companion object {
+        const val SUGGESTION_VOLUME = 0.1f // 10% of max volume
+        const val EMERGENCY_VOLUME = 0.3f // 30% of max volume
+        const val FADE_IN_DURATION = 3000L // 3 seconds
+        const val FADE_OUT_DURATION = 5000L // 5 seconds
+    }
+    
+    fun deliverSuggestion(suggestion: Suggestion, targetStage: SleepStage)
+    fun checkAudioHardware(): AudioCapabilities
+    fun calibrateVolume(userHearing: HearingProfile)
+}
+
+data class AudioCapabilities(
+    val hasBoneConduction: Boolean,
+    val bluetoothVersion: String,
+    val supportedCodecs: List<String>,
+    val latency: Int
+)
+```
+
+### Text-to-Speech Configuration
+```kotlin
+class TTSManager {
+    fun initializeTTS(): Boolean
+    fun generateSuggestionAudio(text: String, voiceProfile: VoiceProfile): ByteArray
+    fun setVoiceParameters(
+        pitch: Float = 0.8f,    // Slightly lower pitch
+        speed: Float = 0.7f,    // Slower speech
+        volume: Float = 0.1f    // Whisper level
+    )
+}
+
+data class VoiceProfile(
+    val gender: Gender,
+    val age: AgeGroup,
+    val accent: Accent,
+    val tone: Tone // CALM, AUTHORITATIVE, FRIENDLY
+)
+```
+
+## Security & Privacy Implementation
+
+### Data Encryption
+```kotlin
+class SecurityManager {
+    fun encryptSensitiveData(data: String): String
+    fun decryptSensitiveData(encryptedData: String): String
+    fun generateUserToken(): String
+    fun validateSession(token: String): Boolean
+}
+
+// Required encryption standards
+// - AES-256 for data at rest
+// - TLS 1.3 for data in transit
+// - RSA-2048 for key exchange
+// - PBKDF2 for password hashing
+```
+
+### Privacy Compliance
+```kotlin
+data class PrivacySettings(
+    val dataRetentionDays: Int = 365,
+    val shareAnonymousData: Boolean = false,
+    val allowResearchParticipation: Boolean = false,
+    val exportDataOnRequest: Boolean = true,
+    val deleteOnUninstall: Boolean = true
+)
+
+class PrivacyManager {
+    fun exportUserData(): UserDataExport
+    fun deleteAllUserData()
+    fun anonymizeDataForResearch(): AnonymizedDataset
+}
+```
+
+## Performance Requirements
+
+### Battery Optimization
+```kotlin
+class PowerManager {
+    fun optimizeBatteryUsage()
+    fun scheduleBackgroundTasks()
+    fun enterLowPowerMode()
+    
+    companion object {
+        const val MAX_BATTERY_IMPACT = 0.05f // 5% max overnight
+        const val BACKGROUND_SYNC_INTERVAL = 300000L // 5 minutes
+        const val DEEP_SLEEP_MONITORING_INTERVAL = 30000L // 30 seconds
+    }
+}
+```
+
+### Memory Management
+```kotlin
+class MemoryManager {
+    fun cleanupOldSessions()
+    fun compressAudioData()
+    fun optimizeModelStorage()
+    
+    companion object {
+        const val MAX_MEMORY_USAGE = 256L * 1024 * 1024 // 256MB
+        const val SESSION_RETENTION_DAYS = 30
+        const val AUDIO_COMPRESSION_RATIO = 0.4f
+    }
+}
+```
+
+## Testing Requirements
+
+### Unit Test Coverage
+- Minimum 80% code coverage
+- Critical path functions: 95% coverage
+- Sleep detection algorithms: 100% coverage
+- Audio delivery system: 100% coverage
+
+### Integration Testing
+```kotlin
+@Test
+class SleepIntegrationTest {
+    @Test fun testSamsungHealthIntegration()
+    @Test fun testAudioDeliveryDuringLightSleep()
+    @Test fun testCravingPredictionAccuracy()
+    @Test fun testPersonalizationEngineUpdates()
+}
+```
+
+### Performance Testing
+```kotlin
+@Test
+class PerformanceTest {
+    @Test fun testBatteryImpactUnder5Percent()
+    @Test fun testAudioLatencyUnder100ms()
+    @Test fun testMemoryUsageUnder256MB()
+    @Test fun testBackgroundProcessingEfficiency()
+}
+```
+
+## Deployment Configuration
+
+### Build Variants
+```gradle
+android {
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        beta {
+            applicationIdSuffix ".beta"
+            debuggable false
+            minifyEnabled true
+        }
+    }
+    
+    flavorDimensions "version"
+    productFlavors {
+        free {
+            dimension "version"
+            applicationIdSuffix ".free"
+        }
+        premium {
+            dimension "version"
+            applicationIdSuffix ".premium"
+        }
+    }
+}
+```
+
+### CI/CD Pipeline
+```yaml
+# GitHub Actions workflow
+name: SleepFree CI/CD
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run unit tests
+      - name: Run integration tests
+      - name: Generate test reports
+  
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Build APK
+      - name: Sign APK
+      - name: Upload to Firebase App Distribution
+```
+
+This technical requirements document provides the detailed specifications needed to start actual development. You'll also need API documentation, UI/UX wireframes, and content creation guidelines.

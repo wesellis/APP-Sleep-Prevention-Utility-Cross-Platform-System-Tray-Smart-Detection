@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SleepFree Brand Colors -->
+    <color name="primary_green">#2E4F3E</color>
+    <color name="secondary_sage">#7FB069</color>
+    <color name="accent_yellow">#FFE66D</color>
+    <color name="background_light">#F8F9FA</color>
+    <color name="text_dark">#212529</color>
+    
+    <!-- Status Colors -->
+    <color name="success_green">#28A745</color>
+    <color name="warning_yellow">#FFC107</color>
+    <color name="danger_red">#DC3545</color>
+    <color name="sleep_purple">#6C63FF</color>
+    
+    <!-- System Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray_light">#F5F5F5</color>
+    <color name="gray_medium">#9E9E9E</color>
+    <color name="gray_dark">#424242</color>
+    
+    <!-- Material Design Colors -->
+    <color name="purple_200">#BBDEFB</color>
+    <color name="purple_500">#2E4F3E</color>
+    <color name="purple_700">#1B2F23</color>
+    <color name="teal_200">#7FB069</color>
+    <color name="teal_700">#5D8049</color>
+</resources>

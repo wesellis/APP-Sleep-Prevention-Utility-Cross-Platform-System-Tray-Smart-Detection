@@ -1,0 +1,420 @@
+# SleepFree Team Hiring Guide
+
+## Hiring Strategy Overview
+
+### Team Philosophy
+SleepFree requires a unique blend of technical excellence, health expertise, and user empathy. We're building a revolutionary product that combines cutting-edge sleep technology with evidence-based behavioral science to save lives. Every team member must share our mission of helping people achieve freedom from smoking addiction.
+
+### Core Competencies Required
+- **Technical Innovation:** Ability to work with emerging technologies
+- **Health Awareness:** Understanding of health applications and user safety
+- **User-Centric Design:** Focus on user experience and accessibility
+- **Data Privacy:** Strong commitment to user privacy and security
+- **Collaborative Spirit:** Cross-functional teamwork and communication
+- **Mission Alignment:** Personal commitment to smoking cessation cause
+
+## Phase 1 Team (Months 1-4) - 6 People
+
+### 1. Lead Android Developer
+**Role:** Technical foundation and architecture leader
+**Reporting:** CEO
+**Salary Range:** $140K - $180K + equity
+
+**Required Skills:**
+- 5+ years Android development experience
+- Expert in Kotlin and Android SDK
+- Experience with Samsung Health SDK or similar health platforms
+- Background in real-time data processing and audio systems
+- Understanding of machine learning integration on mobile
+- Experience with complex app architectures (MVVM, Clean Architecture)
+- Knowledge of healthcare app compliance (HIPAA awareness)
+
+**Preferred Skills:**
+- Sleep or health app development experience
+- Wearable device integration (Galaxy Watch, Wear OS)
+- TensorFlow Lite or on-device ML experience
+- Background in digital therapeutics
+- Open source contributions
+
+**Interview Process:**
+1. **Phone Screen (30 min):** Technical background and motivation
+2. **Technical Interview (90 min):** Architecture design and coding exercise
+3. **Health App Case Study (60 min):** Design a sleep monitoring system
+4. **Team Fit Interview (45 min):** Collaboration and communication
+5. **Reference Checks:** Verify technical leadership and health app experience
+
+**Technical Assessment:**
+```
+Challenge: Design a system that processes real-time sleep data from 
+Samsung Health and determines optimal windows for audio delivery.
+
+Requirements:
+- Handle data from multiple sensors (heart rate, movement, audio)
+- Implement sleep stage classification algorithm
+- Ensure audio delivery doesn't disrupt sleep
+- Maintain user privacy and data security
+- Scale to 100K+ concurrent users
+
+Evaluation Criteria:
+- Architecture design and scalability
+- Understanding of sleep science and user safety
+- Code quality and best practices
+- Problem-solving approach
+- Privacy and security considerations
+```
+
+### 2. Backend Engineer
+**Role:** API development and cloud infrastructure
+**Reporting:** Lead Android Developer
+**Salary Range:** $120K - $160K + equity
+
+**Required Skills:**
+- 4+ years backend development experience
+- Expert in Node.js and cloud platforms (GCP/AWS)
+- Experience with real-time data processing
+- Database design (SQL and NoSQL)
+- API design and microservices architecture
+- DevOps and CI/CD pipeline setup
+- Security best practices and HIPAA compliance
+
+**Preferred Skills:**
+- Healthcare data handling experience
+- Machine learning pipeline development
+- Firebase and Google Cloud expertise
+- Kubernetes and containerization
+- Real-time communication (WebSockets, WebRTC)
+
+**Interview Process:**
+1. **Phone Screen (30 min):** Technical background and healthcare interest
+2. **System Design Interview (90 min):** Design scalable health data API
+3. **Coding Exercise (60 min):** Build real-time data processing system
+4. **Security Interview (45 min):** Healthcare data protection strategies
+5. **Reference Checks:** Verify backend scalability experience
+
+### 3. UI/UX Designer
+**Role:** User experience and interface design
+**Reporting:** CEO
+**Salary Range:** $100K - $140K + equity
+
+**Required Skills:**
+- 4+ years product design experience
+- Expert in Figma, Sketch, and design systems
+- Mobile-first design approach
+- Healthcare/wellness app design experience
+- User research and usability testing
+- Accessibility design principles
+- Understanding of sleep and wellness user needs
+
+**Preferred Skills:**
+- Digital health app portfolio
+- Wearable device interface design
+- Design for sensitive health topics
+- Animation and micro-interaction design
+- User psychology and behavior change design
+
+**Interview Process:**
+1. **Portfolio Review (45 min):** Present health app design work
+2. **Design Challenge (90 min):** Design onboarding for smoking cessation app
+3. **User Research Exercise (60 min):** Plan user testing for sleep feature
+4. **Team Collaboration (45 min):** Work with developers on feasibility
+5. **Reference Checks:** Verify health app design success
+
+**Design Challenge:**
+```
+Challenge: Design the onboarding experience for users starting their 
+quit-smoking journey with SleepFree.
+
+Requirements:
+- Gather necessary health and smoking history information
+- Build trust and motivation for the sleep-based approach
+- Set up device connections and permissions
+- Address user concerns about sleep disruption
+- Create sense of excitement and commitment
+
+Deliverables:
+- User flow wireframes
+- High-fidelity mockups for 5 key screens
+- Explanation of design decisions
+- Consideration of accessibility and edge cases
+```
+
+### 4. QA Engineer
+**Role:** Quality assurance and testing
+**Reporting:** Lead Android Developer
+**Salary Range:** $90K - $120K + equity
+
+**Required Skills:**
+- 3+ years mobile app testing experience
+- Automated testing frameworks (Espresso, XCTest)
+- Health app testing experience
+- Understanding of sleep and biometric data validation
+- Security testing and privacy compliance
+- Performance testing and optimization
+- Bug tracking and test case management
+
+**Preferred Skills:**
+- Wearable device testing experience
+- Sleep laboratory or health device testing
+- Accessibility testing expertise
+- Load testing and scalability validation
+- Medical device testing background
+
+**Interview Process:**
+1. **Phone Screen (30 min):** Testing philosophy and health app experience
+2. **Testing Strategy Interview (90 min):** Design test plan for sleep app
+3. **Hands-on Testing (60 min):** Test existing health app and find issues
+4. **Automation Exercise (60 min):** Write automated tests for sample app
+5. **Reference Checks:** Verify health app testing success
+
+### 5. Hypnotherapy Consultant
+**Role:** Content creation and clinical oversight
+**Reporting:** CEO
+**Contract:** $80K - $120K annually (consultant basis)
+
+**Required Qualifications:**
+- Licensed hypnotherapist or clinical psychologist
+- 5+ years experience in smoking cessation
+- Understanding of sleep-based interventions
+- Content creation and script writing experience
+- Knowledge of digital health applications
+- Research background in behavioral change
+
+**Preferred Qualifications:**
+- PhD in psychology or related field
+- Published research in smoking cessation
+- Experience with digital therapeutics
+- Sleep medicine knowledge
+- Clinical trial experience
+
+**Interview Process:**
+1. **Credentials Review:** Verify licenses and certifications
+2. **Clinical Interview (90 min):** Discuss smoking cessation approaches
+3. **Content Creation Exercise (60 min):** Write sample hypnotic script
+4. **Safety Assessment (45 min):** Evaluate content safety protocols
+5. **Reference Checks:** Verify clinical effectiveness and ethical practice
+
+### 6. Project Manager
+**Role:** Coordination and execution management
+**Reporting:** CEO
+**Salary Range:** $110K - $140K + equity
+
+**Required Skills:**
+- 4+ years project management in tech/health
+- Agile/Scrum methodology expertise
+- Cross-functional team leadership
+- Health product development experience
+- Regulatory compliance understanding
+- Risk management and mitigation
+- Stakeholder communication
+
+**Preferred Skills:**
+- Digital health product launches
+- Clinical trial coordination
+- Regulatory submission experience
+- International expansion management
+- Vendor and partnership management
+
+## Phase 2 Team Additions (Months 5-8) - +2 People
+
+### 7. ML Engineer
+**Role:** AI and machine learning development
+**Reporting:** Lead Android Developer
+**Salary Range:** $150K - $190K + equity
+
+**Required Skills:**
+- 4+ years machine learning experience
+- Expert in TensorFlow and PyTorch
+- Mobile ML deployment (TensorFlow Lite)
+- Healthcare data analysis experience
+- Sleep science and biometric data understanding
+- Real-time prediction systems
+- Model optimization and performance tuning
+
+**Preferred Skills:**
+- Sleep stage classification experience
+- Behavioral prediction models
+- On-device AI optimization
+- Clinical ML validation
+- Digital therapeutics ML applications
+
+### 8. Data Scientist
+**Role:** Analytics and insights development
+**Reporting:** ML Engineer
+**Salary Range:** $130K - $170K + equity
+
+**Required Skills:**
+- 3+ years data science experience
+- Expert in Python, R, and SQL
+- Healthcare analytics background
+- Statistical analysis and A/B testing
+- User behavior analysis
+- Predictive modeling
+- Data visualization and reporting
+
+**Preferred Skills:**
+- Sleep research and analysis
+- Smoking cessation outcome research
+- Digital health metrics expertise
+- Clinical trial data analysis
+- Population health analytics
+
+## Phase 3 Team Additions (Months 9-12) - +4 People
+
+### 9. Senior Android Developer
+**Role:** Advanced feature development
+**Reporting:** Lead Android Developer
+**Salary Range:** $130K - $170K + equity
+
+### 10. Backend Engineer #2
+**Role:** Scalability and infrastructure
+**Reporting:** Backend Engineer #1
+**Salary Range:** $110K - $150K + equity
+
+### 11. VR/AR Developer
+**Role:** Immersive experience development
+**Reporting:** Lead Android Developer
+**Salary Range:** $140K - $180K + equity
+
+### 12. DevOps Engineer
+**Role:** Infrastructure and deployment
+**Reporting:** Backend Engineer #1
+**Salary Range:** $120K - $160K + equity
+
+## Interview Framework
+
+### Universal Interview Questions
+
+**Mission Alignment:**
+1. "Why are you interested in working on smoking cessation technology?"
+2. "How do you feel about developing technology that works during sleep?"
+3. "What's your experience with health or wellness applications?"
+4. "How would you handle working with sensitive user health data?"
+
+**Technical Problem-Solving:**
+1. "Describe a complex technical challenge you've solved."
+2. "How would you ensure user privacy in a health app?"
+3. "What's your approach to building accessible technology?"
+4. "How do you stay current with technology trends?"
+
+**Team Collaboration:**
+1. "Describe a time you had to work closely with non-technical stakeholders."
+2. "How do you handle disagreements about technical approaches?"
+3. "What's your experience with cross-functional teams?"
+4. "How do you communicate technical concepts to non-technical team members?"
+
+### Technical Assessment Framework
+
+**Android Developer Assessment:**
+```
+Technical Skills Test (2 hours):
+1. Build a simple sleep tracking interface
+2. Integrate with mock Samsung Health data
+3. Implement audio playback with volume controls
+4. Add data persistence and sync
+5. Write unit tests for core functionality
+
+Code Review Exercise:
+- Review sample health app code
+- Identify security and privacy issues
+- Suggest architecture improvements
+- Assess code quality and maintainability
+```
+
+**Backend Engineer Assessment:**
+```
+System Design Exercise (90 minutes):
+1. Design API for real-time sleep data processing
+2. Plan database schema for user health data
+3. Design authentication and authorization system
+4. Plan for HIPAA compliance and privacy
+5. Consider scalability for 1M+ users
+
+Coding Exercise (60 minutes):
+- Build REST API for sleep data ingestion
+- Implement real-time data processing
+- Add authentication and validation
+- Write comprehensive tests
+```
+
+### Reference Check Questions
+
+**For Technical Roles:**
+1. "How would you rate [candidate's] technical skills compared to peers?"
+2. "Did they successfully deliver complex projects on time?"
+3. "How did they handle technical challenges and setbacks?"
+4. "Would you hire them again for a similar role?"
+5. "Any concerns about their ability to work in healthcare technology?"
+
+**For All Roles:**
+1. "How well did [candidate] collaborate with cross-functional teams?"
+2. "Were they reliable and professional in their work?"
+3. "How did they handle sensitive or confidential information?"
+4. "What were their greatest strengths and areas for improvement?"
+5. "Would you recommend them for a mission-critical health product?"
+
+## Compensation Philosophy
+
+### Equity Distribution Strategy
+```
+Total Equity Pool: 20% for employees (pre-Series A)
+
+Leadership Team (CEO, CTO, Head of Product): 8-12%
+Senior Individual Contributors: 0.5-1.5%
+Mid-level Contributors: 0.25-0.75%
+Junior Contributors: 0.1-0.4%
+Advisors and Consultants: 0.1-0.5%
+
+Vesting Schedule: 4 years with 1-year cliff
+```
+
+### Benefits Package
+- Health, dental, and vision insurance (100% company paid)
+- Flexible PTO and mental health days
+- Professional development budget ($2K annually)
+- Remote work flexibility
+- Equipment and home office budget
+- Stock option program
+- Health and wellness stipend
+- Conference and training attendance
+
+### Performance Review Process
+- Quarterly check-ins with manager
+- Annual 360-degree feedback process
+- Objective-based performance metrics
+- Professional development planning
+- Promotion and raise consideration cycles
+- Mission impact and user outcome focus
+
+## Diversity and Inclusion Strategy
+
+### Hiring Commitments
+- Diverse interview panels for all positions
+- Partnerships with underrepresented groups in tech
+- Inclusive job descriptions and requirements
+- Bias training for all hiring managers
+- Multiple sourcing channels for diverse candidates
+
+### Team Culture Goals
+- 50%+ representation of underrepresented groups
+- Inclusive team building and communication practices
+- Regular diversity and inclusion training
+- Safe space for feedback and concerns
+- Mentorship and sponsorship programs
+
+## Remote Work Policy
+
+### Hybrid Approach
+- Core team collaboration days (Tuesday-Thursday in office)
+- Flexible remote work (Monday and Friday)
+- Quarterly team retreats and offsites
+- International team members welcome
+- Flexible hours across time zones
+
+### Remote Work Support
+- Home office setup budget ($1,500)
+- High-quality video conferencing equipment
+- Collaborative tools and software (Slack, Figma, etc.)
+- Regular virtual team building activities
+- Mental health and wellness support
+
+This comprehensive hiring guide ensures SleepFree builds a world-class team capable of revolutionizing smoking cessation through innovative sleep-based technology.

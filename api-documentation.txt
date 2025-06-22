@@ -1,0 +1,591 @@
+# SleepFree API Documentation
+
+## Base URL
+```
+Production: https://api.sleepfree.app/v1
+Staging: https://staging-api.sleepfree.app/v1
+Development: http://localhost:3000/v1
+```
+
+## Authentication
+All API requests require JWT authentication via Authorization header:
+```
+Authorization: Bearer <jwt_token>
+```
+
+## Core API Endpoints
+
+### Authentication Endpoints
+
+#### POST /auth/register
+```json
+Request:
+{
+  "email": "user@example.com",
+  "password": "securePassword123",
+  "profile": {
+    "name": "John Doe",
+    "age": 35,
+    "smokingHistory": {
+      "cigarettesPerDay": 20,
+      "yearsSmoking": 15,
+      "previousQuitAttempts": 3,
+      "triggers": ["stress", "alcohol", "driving"]
+    }
+  }
+}
+
+Response:
+{
+  "success": true,
+  "user": {
+    "id": "user_123",
+    "email": "user@example.com",
+    "profile": {...},
+    "subscription": {
+      "tier": "free",
+      "expiresAt": null
+    }
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "refreshToken": "refresh_token_here"
+}
+```
+
+#### POST /auth/login
+```json
+Request:
+{
+  "email": "user@example.com",
+  "password": "securePassword123"
+}
+
+Response:
+{
+  "success": true,
+  "user": {...},
+  "token": "jwt_token_here",
+  "refreshToken": "refresh_token_here"
+}
+```
+
+### User Profile Endpoints
+
+#### GET /user/profile
+```json
+Response:
+{
+  "success": true,
+  "profile": {
+    "id": "user_123",
+    "name": "John Doe",
+    "email": "user@example.com",
+    "quitDate": "2025-01-15T00:00:00Z",
+    "smokingHistory": {
+      "cigarettesPerDay": 20,
+      "yearsSmoking": 15,
+      "quitAttempts": 3,
+      "triggers": ["stress", "alcohol", "driving"]
+    },
+    "personalizationProfile": {
+      "learningStyle": "auditory",
+      "voicePreference": "female",
+      "optimalSuggestionTimes": ["22:30", "01:15", "04:30"],
+      "responsePatterns": {
+        "aversion_suggestions": 0.85,
+        "positive_affirmations": 0.92,
+        "health_benefits": 0.78
+      }
+    },
+    "settings": {
+      "suggestionVolume": 0.15,
+      "emergencyContactEnabled": true,
+      "dataSharing": false
+    }
+  }
+}
+```
+
+#### PUT /user/profile
+```json
+Request:
+{
+  "name": "John Smith",
+  "settings": {
+    "suggestionVolume": 0.12,
+    "emergencyContactEnabled": false
+  }
+}
+
+Response:
+{
+  "success": true,
+  "message": "Profile updated successfully"
+}
+```
+
+### Sleep Data Endpoints
+
+#### POST /sleep/session
+```json
+Request:
+{
+  "sessionId": "session_20250601_001",
+  "startTime": "2025-06-01T22:30:00Z",
+  "endTime": "2025-06-02T06:30:00Z",
+  "sleepStages": [
+    {
+      "stage": "LIGHT_SLEEP",
+      "startTime": "2025-06-01T22:45:00Z",
+      "endTime": "2025-06-01T23:30:00Z",
+      "confidence": 0.92
+    },
+    {
+      "stage": "DEEP_SLEEP", 
+      "startTime": "2025-06-01T23:30:00Z",
+      "endTime": "2025-06-02T01:00:00Z",
+      "confidence": 0.95
+    }
+  ],
+  "biometrics": {
+    "avgHeartRate": 58,
+    "heartRateVariability": 42,
+    "movementScore": 0.23,
+    "respiratoryRate": 14
+  },
+  "environmentalFactors": {
+    "roomTemperature": 68,
+    "noiseLevel": 25,
+    "lightLevel": 0
+  }
+}
+
+Response:
+{
+  "success": true,
+  "sessionId": "session_20250601_001",
+  "qualityScore": 0.87,
+  "suggestionsScheduled": 3,
+  "nextOptimalWindow": "2025-06-02T01:15:00Z"
+}
+```
+
+#### GET /sleep/sessions
+```json
+Query Parameters:
+?startDate=2025-06-01&endDate=2025-06-07&limit=50
+
+Response:
+{
+  "success": true,
+  "sessions": [
+    {
+      "sessionId": "session_20250601_001",
+      "date": "2025-06-01",
+      "duration": 480,
+      "qualityScore": 0.87,
+      "suggestionsDelivered": 3,
+      "effectiveness": 0.89
+    }
+  ],
+  "totalSessions": 7,
+  "averageQuality": 0.84
+}
+```
+
+### Suggestion Management Endpoints
+
+#### POST /suggestions/generate
+```json
+Request:
+{
+  "context": {
+    "currentSleepStage": "LIGHT_SLEEP",
+    "timeInStage": 900,
+    "userState": {
+      "stressLevel": 0.3,
+      "cravingIntensity": 0.0,
+      "lastCraving": "2025-06-01T18:30:00Z"
+    }
+  },
+  "preferences": {
+    "suggestionType": "aversion",
+    "duration": 120,
+    "voiceProfile": "calm_female"
+  }
+}
+
+Response:
+{
+  "success": true,
+  "suggestion": {
+    "id": "sugg_abc123",
+    "content": "As you rest peacefully, your body naturally rejects the idea of cigarettes...",
+    "audioUrl": "https://cdn.sleepfree.app/audio/sugg_abc123.mp3",
+    "duration": 118,
+    "type": "aversion",
+    "personalizedScore": 0.91
+  },
+  "scheduledDelivery": "2025-06-02T01:15:00Z"
+}
+```
+
+#### POST /suggestions/delivered
+```json
+Request:
+{
+  "suggestionId": "sugg_abc123",
+  "deliveryTime": "2025-06-02T01:15:23Z",
+  "actualSleepStage": "LIGHT_SLEEP",
+  "deliveryQuality": {
+    "volumeAccuracy": 0.98,
+    "timingAccuracy": 0.95,
+    "userResponse": "no_disturbance"
+  }
+}
+
+Response:
+{
+  "success": true,
+  "message": "Delivery recorded",
+  "effectivenessUpdate": 0.03
+}
+```
+
+### Craving Management Endpoints
+
+#### POST /cravings/report
+```json
+Request:
+{
+  "intensity": 7,
+  "triggerType": "stress",
+  "location": {
+    "latitude": 38.0293,
+    "longitude": -78.4767,
+    "address": "Work Office"
+  },
+  "context": {
+    "timeOfDay": "afternoon",
+    "socialSituation": "alone",
+    "emotionalState": "anxious",
+    "lastMeal": "2025-06-01T12:30:00Z"
+  },
+  "timestamp": "2025-06-01T15:45:00Z"
+}
+
+Response:
+{
+  "success": true,
+  "cravingId": "craving_xyz789",
+  "intervention": {
+    "type": "emergency_breathing",
+    "content": "Take 5 deep breaths with me...",
+    "audioUrl": "https://cdn.sleepfree.app/interventions/breathing_5min.mp3",
+    "duration": 300
+  },
+  "supportResources": [
+    "crisis_hotline",
+    "peer_chat",
+    "distraction_game"
+  ]
+}
+```
+
+#### POST /cravings/outcome
+```json
+Request:
+{
+  "cravingId": "craving_xyz789",
+  "outcome": "resisted",
+  "interventionUsed": "emergency_breathing",
+  "effectiveness": 8,
+  "timeToResolution": 420,
+  "notes": "Breathing exercise really helped"
+}
+
+Response:
+{
+  "success": true,
+  "message": "Outcome recorded",
+  "streakUpdated": true,
+  "newAchievements": ["5_day_streak"]
+}
+```
+
+### Analytics Endpoints
+
+#### GET /analytics/progress
+```json
+Response:
+{
+  "success": true,
+  "progress": {
+    "quitDate": "2025-01-15T00:00:00Z",
+    "daysSmokeFreee": 137,
+    "cigarettesAvoided": 2740,
+    "moneySaved": 548.00,
+    "healthImprovements": [
+      {
+        "metric": "lung_capacity",
+        "improvement": 0.15,
+        "description": "15% improvement in lung function"
+      },
+      {
+        "metric": "circulation",
+        "improvement": 0.23,
+        "description": "Better blood circulation"
+      }
+    ],
+    "currentStreak": {
+      "type": "smoke_free_days",
+      "count": 137,
+      "record": 137
+    }
+  }
+}
+```
+
+#### GET /analytics/sleep-effectiveness
+```json
+Query Parameters:
+?period=30d
+
+Response:
+{
+  "success": true,
+  "effectiveness": {
+    "period": "30d",
+    "totalSessions": 30,
+    "averageQuality": 0.86,
+    "suggestionStats": {
+      "totalDelivered": 89,
+      "successfulDeliveries": 87,
+      "averageEffectiveness": 0.84,
+      "optimalWindowHits": 0.92
+    },
+    "trends": {
+      "sleepQuality": "improving",
+      "suggestionAcceptance": "stable",
+      "cravingReduction": "significant"
+    },
+    "recommendations": [
+      "Continue current sleep schedule",
+      "Consider increasing suggestion frequency",
+      "Focus on stress trigger management"
+    ]
+  }
+}
+```
+
+### Machine Learning Endpoints
+
+#### GET /ml/models/latest
+```json
+Response:
+{
+  "success": true,
+  "models": {
+    "sleepStageClassifier": {
+      "version": "v2.1.3",
+      "accuracy": 0.94,
+      "downloadUrl": "https://cdn.sleepfree.app/models/sleep_v2.1.3.tflite",
+      "size": 2048576,
+      "lastUpdated": "2025-05-28T10:30:00Z"
+    },
+    "cravingPredictor": {
+      "version": "v1.8.1", 
+      "accuracy": 0.78,
+      "downloadUrl": "https://cdn.sleepfree.app/models/craving_v1.8.1.tflite",
+      "size": 1536000,
+      "lastUpdated": "2025-05-25T14:20:00Z"
+    },
+    "personalizationEngine": {
+      "version": "v3.0.2",
+      "accuracy": 0.89,
+      "downloadUrl": "https://cdn.sleepfree.app/models/personalization_v3.0.2.tflite",
+      "size": 3072000,
+      "lastUpdated": "2025-05-30T09:15:00Z"
+    }
+  }
+}
+```
+
+#### POST /ml/feedback
+```json
+Request:
+{
+  "modelType": "cravingPredictor",
+  "predictionId": "pred_123456",
+  "actualOutcome": {
+    "hadCraving": true,
+    "intensity": 6,
+    "timestamp": "2025-06-01T15:45:00Z"
+  },
+  "prediction": {
+    "probability": 0.73,
+    "confidence": 0.81,
+    "timestamp": "2025-06-01T15:30:00Z"
+  }
+}
+
+Response:
+{
+  "success": true,
+  "message": "Feedback recorded",
+  "modelUpdateScheduled": true
+}
+```
+
+### Subscription Management Endpoints
+
+#### GET /subscription/status
+```json
+Response:
+{
+  "success": true,
+  "subscription": {
+    "tier": "premium",
+    "status": "active",
+    "expiresAt": "2025-07-01T00:00:00Z",
+    "features": [
+      "unlimited_suggestions",
+      "ai_personalization", 
+      "craving_prediction",
+      "emergency_intervention",
+      "detailed_analytics"
+    ],
+    "usage": {
+      "suggestionsThisMonth": 287,
+      "limit": -1,
+      "emergencyInterventions": 12,
+      "limit": -1
+    }
+  }
+}
+```
+
+#### POST /subscription/upgrade
+```json
+Request:
+{
+  "targetTier": "ultimate",
+  "paymentMethod": "card_1234567890",
+  "billingCycle": "monthly"
+}
+
+Response:
+{
+  "success": true,
+  "subscription": {
+    "tier": "ultimate",
+    "status": "active",
+    "nextBilling": "2025-07-01T00:00:00Z",
+    "amount": 3999,
+    "currency": "USD"
+  },
+  "newFeatures": [
+    "voice_stress_analysis",
+    "vr_visualization",
+    "priority_support"
+  ]
+}
+```
+
+## WebSocket Events
+
+### Real-time Sleep Monitoring
+```javascript
+// Connect to WebSocket
+const ws = new WebSocket('wss://api.sleepfree.app/ws/sleep');
+
+// Listen for sleep stage changes
+ws.on('sleep_stage_change', (data) => {
+  console.log('New sleep stage:', data.stage);
+  console.log('Confidence:', data.confidence);
+  console.log('Optimal for suggestions:', data.optimalWindow);
+});
+
+// Listen for suggestion delivery confirmations
+ws.on('suggestion_delivered', (data) => {
+  console.log('Suggestion delivered:', data.suggestionId);
+  console.log('User response:', data.response);
+});
+
+// Emergency craving detected
+ws.on('craving_predicted', (data) => {
+  console.log('Craving predicted in:', data.minutesUntil);
+  console.log('Confidence:', data.confidence);
+  console.log('Recommended intervention:', data.intervention);
+});
+```
+
+## Error Handling
+
+### Standard Error Response Format
+```json
+{
+  "success": false,
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid request parameters",
+    "details": {
+      "field": "email",
+      "issue": "Invalid email format"
+    },
+    "timestamp": "2025-06-01T15:30:00Z",
+    "requestId": "req_abc123"
+  }
+}
+```
+
+### Common Error Codes
+- `AUTH_REQUIRED` - Authentication token missing or invalid
+- `INSUFFICIENT_PERMISSIONS` - User doesn't have access to resource
+- `VALIDATION_ERROR` - Request data validation failed
+- `RATE_LIMIT_EXCEEDED` - Too many requests in time window
+- `SUBSCRIPTION_REQUIRED` - Feature requires paid subscription
+- `DEVICE_NOT_SUPPORTED` - Hardware requirements not met
+- `MODEL_UNAVAILABLE` - ML model temporarily unavailable
+- `SLEEP_DATA_INSUFFICIENT` - Not enough data for analysis
+
+## Rate Limiting
+```
+Free Tier: 100 requests/hour
+Premium Tier: 1000 requests/hour  
+Ultimate Tier: 5000 requests/hour
+Emergency Endpoints: No rate limit
+```
+
+## Data Formats
+
+### Sleep Stage Types
+```
+AWAKE - User is conscious
+LIGHT_SLEEP - Optimal for suggestions
+DEEP_SLEEP - No interruptions allowed  
+REM_SLEEP - Protected zone
+TRANSITIONING - Between stages
+UNKNOWN - Cannot determine stage
+```
+
+### Suggestion Types
+```
+AVERSION - Make cigarettes seem unpleasant
+POSITIVE_AFFIRMATION - Reinforce non-smoker identity
+HEALTH_BENEFITS - Focus on health improvements
+FINANCIAL_MOTIVATION - Emphasize money saved
+SOCIAL_BENEFITS - Improved relationships/appearance
+TRIGGER_REPLACEMENT - New responses to triggers
+FUTURE_VISUALIZATION - Imagine healthy future self
+```
+
+### Trigger Categories
+```
+STRESS - Work, relationship, financial pressure
+SOCIAL - Parties, bars, peer pressure
+HABITUAL - Coffee, driving, after meals
+EMOTIONAL - Anxiety, depression, anger
+ENVIRONMENTAL - Specific locations or situations
+SUBSTANCE - Alcohol, caffeine interactions
+```

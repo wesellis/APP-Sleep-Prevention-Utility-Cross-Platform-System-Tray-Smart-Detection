@@ -1,0 +1,541 @@
+# SleepFree Legal Compliance & Documentation
+
+## Regulatory Framework Overview
+
+### Classification Strategy
+**SleepFree positioning: Digital Wellness Tool (NOT Medical Device)**
+- Focus on behavior modification and habit change
+- Avoid medical claims about disease treatment
+- Position as lifestyle and wellness enhancement
+- Emphasize user empowerment and choice
+
+### Key Regulatory Considerations
+```
+FDA (United States):
+- Digital Wellness Tool classification
+- Avoid medical device regulations
+- No disease treatment claims
+- Focus on general wellness
+
+EMA (European Union):
+- MDR (Medical Device Regulation) compliance assessment
+- CE marking requirements (if applicable)
+- GDPR data protection compliance
+- Digital therapeutics classification review
+
+Health Canada:
+- Natural health product classification
+- Software as medical device (SaMD) assessment
+- Privacy legislation compliance (PIPEDA)
+```
+
+## Terms of Service
+
+### Complete Terms of Service Document
+```
+SLEEPFREE TERMS OF SERVICE
+
+Last Updated: [DATE]
+
+1. ACCEPTANCE OF TERMS
+By downloading, installing, or using SleepFree ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the App.
+
+2. DESCRIPTION OF SERVICE
+SleepFree is a digital wellness application designed to support smoking cessation through sleep-based behavioral modification techniques. The App provides:
+- Sleep monitoring and analysis
+- Guided relaxation and suggestion sessions
+- Progress tracking and motivation
+- Educational content about smoking cessation
+- Peer support features
+
+3. NOT MEDICAL ADVICE OR TREATMENT
+IMPORTANT: SleepFree is NOT a medical device and does NOT provide medical advice, diagnosis, or treatment. The App is designed for general wellness and educational purposes only.
+
+- SleepFree is not a substitute for professional medical care
+- Consult healthcare professionals before making health decisions
+- The App does not guarantee smoking cessation success
+- Individual results may vary significantly
+- Do not rely solely on the App for health decisions
+
+4. USER ELIGIBILITY AND RESPONSIBILITIES
+Age Requirement: Users must be 18 years or older
+Health Conditions: Users with sleep disorders, psychological conditions, or other health issues should consult healthcare providers before use
+Honest Information: Users must provide accurate information during setup
+Safe Usage: Users must follow safety guidelines for sleep sessions
+
+5. PRIVACY AND DATA COLLECTION
+We collect and process personal data as described in our Privacy Policy, including:
+- Sleep patterns and biometric data
+- Usage patterns and app interactions
+- Audio recordings (only during active sessions)
+- Device information and performance data
+
+Data Usage:
+- Personalizing your experience
+- Improving app effectiveness
+- Research and development (anonymized)
+- Customer support and troubleshooting
+
+6. HYPNOTIC CONTENT AND SUGGESTIONS
+Nature of Content: Audio suggestions use relaxation and visualization techniques
+User Consent: All suggestions require explicit user consent
+Right to Refuse: Users can stop or skip any suggestion at any time
+No Harmful Content: All content is reviewed for safety and appropriateness
+Individual Response: Effects may vary between individuals
+
+7. SUBSCRIPTION AND PAYMENTS
+Free Tier: Basic features available at no cost
+Premium Subscriptions: Advanced features require paid subscription
+Billing: Subscriptions automatically renew unless cancelled
+Refunds: Refund requests subject to App Store policies
+Price Changes: Subscription prices may change with 30 days notice
+
+8. INTELLECTUAL PROPERTY
+SleepFree App: All rights reserved to SleepFree, Inc.
+User Content: Users retain rights to personal data and feedback
+Limited License: Users granted limited license to use the App
+Restrictions: No copying, modifying, or reverse engineering
+
+9. PROHIBITED USES
+Users may NOT:
+- Use the App for commercial purposes without permission
+- Share account credentials with others
+- Attempt to hack, modify, or interfere with the App
+- Use the App while operating vehicles or machinery
+- Record or distribute audio content from the App
+- Provide false information or create fake accounts
+
+10. DISCLAIMERS AND LIMITATIONS OF LIABILITY
+NO WARRANTIES: The App is provided "as is" without warranties
+EFFECTIVENESS: No guarantee of smoking cessation success
+TECHNICAL ISSUES: We are not liable for technical problems or data loss
+HEALTH OUTCOMES: Not responsible for health outcomes or side effects
+LIMITATION OF DAMAGES: Liability limited to subscription fees paid
+
+11. INDEMNIFICATION
+Users agree to indemnify SleepFree against claims arising from:
+- Misuse of the App
+- Violation of these Terms
+- Health decisions made based on App content
+- Third-party intellectual property infringement
+
+12. TERMINATION
+We may terminate accounts for:
+- Terms violations
+- Fraudulent activity
+- Extended inactivity
+- Technical or legal reasons
+
+Users may terminate accounts at any time through app settings.
+
+13. CHANGES TO TERMS
+We may update these Terms with reasonable notice. Continued use constitutes acceptance of changes.
+
+14. GOVERNING LAW
+These Terms are governed by the laws of [JURISDICTION] without regard to conflict of law principles.
+
+15. CONTACT INFORMATION
+For questions about these Terms:
+Email: legal@sleepfree.app
+Address: [COMPANY ADDRESS]
+```
+
+## Privacy Policy
+
+### Comprehensive Privacy Policy
+```
+SLEEPFREE PRIVACY POLICY
+
+Last Updated: [DATE]
+
+1. INFORMATION WE COLLECT
+
+Personal Information:
+- Name and email address
+- Age and demographic information
+- Smoking history and quit goals
+- Contact preferences
+
+Health and Biometric Data:
+- Sleep patterns and sleep stage data
+- Heart rate and movement data
+- Audio recordings during active sessions only
+- Self-reported craving and mood data
+- Progress tracking information
+
+Technical Data:
+- Device information and operating system
+- App usage patterns and feature interactions
+- Performance data and crash reports
+- Location data (if permitted) for trigger mapping
+
+2. HOW WE USE YOUR INFORMATION
+
+Service Provision:
+- Personalizing suggestions and content
+- Monitoring sleep patterns for optimal timing
+- Tracking progress and providing insights
+- Providing customer support
+
+Improvement and Research:
+- Analyzing effectiveness of different approaches
+- Improving algorithms and personalization
+- Developing new features and content
+- Conducting anonymized research studies
+
+Communications:
+- Sending progress updates and encouragement
+- Notifying about app updates and new features
+- Providing educational content
+- Emergency support when needed
+
+3. DATA SHARING AND DISCLOSURE
+
+We DO NOT sell personal data to third parties.
+
+Limited Sharing:
+- Service providers (hosting, analytics, customer support)
+- Healthcare partners (with explicit consent only)
+- Legal requirements (court orders, safety concerns)
+- Business transfers (with privacy protection continuity)
+
+Anonymized Data:
+- Research institutions for smoking cessation studies
+- Public health organizations for population insights
+- App improvement and algorithm training
+
+4. DATA SECURITY
+
+Encryption:
+- All data encrypted in transit and at rest
+- End-to-end encryption for sensitive health data
+- Regular security audits and penetration testing
+- Secure cloud infrastructure with enterprise-grade protection
+
+Access Controls:
+- Role-based access for employees
+- Multi-factor authentication requirements
+- Regular access reviews and removal of unused accounts
+- Logging and monitoring of all data access
+
+5. YOUR PRIVACY RIGHTS
+
+Access: Request copies of your personal data
+Correction: Update or correct inaccurate information
+Deletion: Request deletion of your account and data
+Portability: Export your data in machine-readable format
+Objection: Opt out of certain data processing activities
+Consent Withdrawal: Revoke consent for data collection
+
+6. DATA RETENTION
+
+Active Users: Data retained while account is active
+Deleted Accounts: Most data deleted within 30 days
+Legal Requirements: Some data retained for legal compliance
+Research Data: Anonymized data may be retained indefinitely
+Backup Systems: Data in backups deleted within 90 days
+
+7. INTERNATIONAL DATA TRANSFERS
+
+Cross-Border Processing:
+- Data may be processed in countries outside your residence
+- Adequate protection measures in place (Standard Contractual Clauses)
+- GDPR adequacy decisions respected for EU users
+- Regular assessment of international transfer safeguards
+
+8. CHILDREN'S PRIVACY
+
+Age Restriction: App not intended for users under 18
+No Knowing Collection: We do not knowingly collect data from minors
+Parental Rights: Parents may request deletion of minor's data
+Verification: Age verification required during registration
+
+9. THIRD-PARTY SERVICES
+
+Integration Partners:
+- Samsung Health (sleep and biometric data)
+- Google Firebase (app infrastructure and analytics)
+- Payment processors (subscription management)
+- Customer support platforms
+
+Their Privacy Policies:
+Users should review privacy policies of integrated services
+We are not responsible for third-party privacy practices
+Data sharing limited to necessary service provision
+
+10. COOKIES AND TRACKING
+
+App Analytics:
+- Usage analytics to improve app performance
+- Crash reporting for bug fixes
+- Feature usage tracking for optimization
+- Performance monitoring for service quality
+
+User Controls:
+- Opt-out options available in app settings
+- Analytics data anonymized where possible
+- No advertising tracking or targeting
+
+11. CHANGES TO PRIVACY POLICY
+
+Notification: Users notified of material changes via email and app notification
+Review Period: 30 days notice before changes take effect
+Acceptance: Continued use constitutes acceptance of changes
+Historical Versions: Previous versions available upon request
+
+12. CONTACT INFORMATION
+
+Privacy Questions:
+Email: privacy@sleepfree.app
+Mail: Privacy Officer, SleepFree Inc., [ADDRESS]
+Phone: [PHONE NUMBER]
+
+Data Protection Officer (EU users):
+Email: dpo@sleepfree.app
+Response Time: Within 30 days for most requests
+```
+
+## Medical Disclaimers
+
+### Comprehensive Medical Disclaimer
+```
+IMPORTANT MEDICAL DISCLAIMER
+
+SleepFree is a digital wellness application designed to support smoking cessation through behavioral modification techniques. Please read this disclaimer carefully before using the app.
+
+NOT MEDICAL ADVICE OR TREATMENT
+- SleepFree is NOT a medical device
+- The app does NOT provide medical advice, diagnosis, or treatment
+- Content is for educational and motivational purposes only
+- Individual results may vary significantly
+- The app is not a substitute for professional medical care
+
+CONSULT HEALTHCARE PROFESSIONALS
+Before using SleepFree, consult your healthcare provider if you have:
+- Sleep disorders (sleep apnea, insomnia, narcolepsy)
+- Mental health conditions (depression, anxiety, PTSD)
+- Hearing impairments or ear conditions
+- Cardiovascular conditions
+- Seizure disorders or epilepsy
+- Any chronic medical condition
+- Concerns about using audio content during sleep
+
+SLEEP SAFETY
+- Use only during natural sleep periods
+- Do not use while driving or operating machinery
+- Ensure safe sleep environment before starting sessions
+- Stop use if experiencing sleep disruption or discomfort
+- The app is designed to preserve natural sleep patterns
+
+HYPNOTIC CONTENT SAFETY
+- Audio suggestions use gentle relaxation techniques
+- All content reviewed by licensed hypnotherapy professionals
+- Users maintain full control and can stop at any time
+- No content designed to harm or manipulate
+- Effects are temporary and user-controlled
+
+SMOKING CESSATION GUIDANCE
+- Quitting smoking may cause withdrawal symptoms
+- Consult healthcare providers about nicotine replacement therapy
+- Seek professional support for severe withdrawal symptoms
+- The app supports but does not guarantee quit success
+- Individual factors affect cessation success rates
+
+EMERGENCY SITUATIONS
+If experiencing:
+- Severe psychological distress
+- Suicidal thoughts or self-harm urges
+- Medical emergencies
+- Adverse reactions to audio content
+
+Immediately contact:
+- Emergency services (911 in US)
+- Your healthcare provider
+- National crisis hotlines
+- Mental health professionals
+
+LIABILITY LIMITATIONS
+- Users assume responsibility for their health decisions
+- SleepFree, Inc. not liable for health outcomes
+- Individual response to content may vary
+- Professional medical advice supersedes app recommendations
+
+RESEARCH BASIS
+- App techniques based on established behavioral science
+- Individual efficacy may differ from research studies
+- Ongoing research continues to refine approaches
+- No guarantee of research-level results for individual users
+
+REPORTING ADVERSE EVENTS
+Report any negative experiences to:
+- Email: safety@sleepfree.app
+- Include detailed description of experience
+- Medical attention may be necessary
+- Reports help improve app safety
+```
+
+## FDA Compliance Strategy
+
+### Digital Wellness Tool Classification
+```
+FDA Strategy for SleepFree:
+
+Classification Goal: Digital Wellness Tool (Non-Medical Device)
+
+Key Positioning Elements:
+1. Focus on behavior modification, not disease treatment
+2. Educational and motivational content only
+3. User empowerment and choice emphasis
+4. No diagnostic or therapeutic claims
+5. General wellness and lifestyle support
+
+Compliance Measures:
+- Regular legal review of all content and claims
+- Clinical validation of wellness benefits (not medical outcomes)
+- Clear disclaimers about non-medical nature
+- Professional oversight of content development
+- User safety monitoring and reporting systems
+
+Avoiding Medical Device Classification:
+- No disease-specific treatment claims
+- No diagnostic functionality
+- No prescription or medical intervention recommendations
+- Clear educational and motivational positioning
+- Wellness and lifestyle focus in all marketing
+```
+
+### Clinical Evidence Requirements
+```
+Research Standards for Wellness Claims:
+
+Study Design:
+- Randomized controlled trials for effectiveness claims
+- IRB approval for all human subjects research
+- Informed consent procedures
+- Data integrity and statistical validity
+- Peer review and publication in respected journals
+
+Outcome Measures:
+- Behavioral change metrics (smoking reduction/cessation)
+- Quality of life improvements
+- User satisfaction and engagement
+- Safety monitoring (no adverse effects)
+- Long-term sustainability of behavior change
+
+Safety Monitoring:
+- Adverse event reporting system
+- Regular safety data review
+- Independent safety monitoring board
+- Protocol modifications based on safety data
+- Transparent reporting of all outcomes
+```
+
+## International Compliance
+
+### GDPR Compliance (European Union)
+```
+GDPR Compliance Checklist:
+
+Data Protection by Design:
+☐ Privacy impact assessments completed
+☐ Data minimization principles implemented
+☐ Purpose limitation enforced
+☐ Storage limitation policies in place
+☐ Security measures documented and tested
+
+User Rights Implementation:
+☐ Right to access (data export functionality)
+☐ Right to rectification (data correction tools)
+☐ Right to erasure (account deletion with data purging)
+☐ Right to portability (machine-readable data export)
+☐ Right to object (opt-out mechanisms)
+☐ Right to restrict processing (granular privacy controls)
+
+Legal Basis Documentation:
+☐ Consent mechanisms for optional processing
+☐ Legitimate interest assessments documented
+☐ Legal basis clearly communicated to users
+☐ Consent withdrawal mechanisms available
+☐ Processing records maintained
+
+Data Transfers:
+☐ Standard Contractual Clauses for US transfers
+☐ Adequacy decisions verified where applicable
+☐ Transfer impact assessments completed
+☐ Supplementary measures implemented where needed
+```
+
+### HIPAA Considerations (United States)
+```
+HIPAA Analysis for SleepFree:
+
+Business Model Assessment:
+- SleepFree generally NOT a covered entity
+- Healthcare provider partnerships may trigger HIPAA
+- Business associate agreements required for healthcare integrations
+- De-identification procedures for research data
+
+Compliance Measures for Healthcare Partnerships:
+☐ Business Associate Agreements (BAAs) with healthcare partners
+☐ Administrative safeguards (access controls, training)
+☐ Physical safeguards (facility access, workstation security)
+☐ Technical safeguards (encryption, audit logs, authentication)
+☐ Breach notification procedures
+☐ Risk assessments and mitigation strategies
+```
+
+## Liability and Insurance
+
+### Professional Liability Coverage
+```
+Insurance Requirements:
+
+Professional Liability Insurance:
+- Technology errors and omissions coverage
+- Cyber liability and data breach coverage
+- Product liability for digital wellness products
+- Directors and officers coverage
+- General business liability
+
+Coverage Amounts:
+- Minimum $5M professional liability
+- $10M cyber liability coverage
+- $2M general liability
+- $1M employment practices liability
+- International coverage for global operations
+
+Risk Management:
+- Regular legal review of content and claims
+- Professional oversight of hypnotic content
+- User safety monitoring and reporting
+- Incident response procedures
+- Legal compliance monitoring and updates
+```
+
+### User Agreement Enforceability
+```
+Enforceability Factors:
+
+Clear and Conspicuous Terms:
+- Prominent placement during onboarding
+- Plain language explanations
+- Specific acceptance required
+- Regular reminder of key terms
+- Updates with notice and consent
+
+Reasonable Terms:
+- Industry-standard liability limitations
+- Fair dispute resolution procedures
+- Reasonable data usage terms
+- Clear service descriptions
+- Proportionate remedies
+
+Legal Validity:
+- Jurisdiction-specific legal review
+- Compliance with local consumer protection laws
+- Arbitration clause enforceability verification
+- Class action waiver validity assessment
+- Unconscionability analysis and mitigation
+```
+
+This comprehensive legal framework ensures SleepFree operates within regulatory requirements while protecting both users and the company from potential liability issues.

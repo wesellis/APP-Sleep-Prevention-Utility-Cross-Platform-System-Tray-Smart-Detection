@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SleepFree" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/primary_green</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/secondary_sage</item>
+        <item name="colorOnPrimaryContainer">@color/text_dark</item>
+        
+        <item name="colorSecondary">@color/secondary_sage</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/accent_yellow</item>
+        <item name="colorOnSecondaryContainer">@color/text_dark</item>
+        
+        <item name="android:colorBackground">@color/background_light</item>
+        <item name="colorOnBackground">@color/text_dark</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/text_dark</item>
+    </style>
+
+    <style name="Theme.SleepFree" parent="Base.Theme.SleepFree" />
+</resources>

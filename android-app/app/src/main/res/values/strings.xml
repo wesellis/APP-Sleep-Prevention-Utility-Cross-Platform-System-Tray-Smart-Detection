@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">SleepFree</string>
+    <string name="app_tagline">Freedom While You Sleep</string>
+    
+    <!-- Welcome Screen -->
+    <string name="welcome_title">Quit Smoking While You Sleep</string>
+    <string name="welcome_subtitle">Revolutionary sleep-based technology</string>
+    <string name="get_started">Get Started</string>
+    
+    <!-- Navigation -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_sleep">Sleep</string>
+    <string name="nav_progress">Progress</string>
+    <string name="nav_emergency">Emergency</string>
+    
+    <!-- Dashboard -->
+    <string name="days_smoke_free">Days Smoke-Free</string>
+    <string name="money_saved">Money Saved</string>
+    <string name="cigarettes_avoided">Cigarettes Avoided</string>
+    
+    <!-- Onboarding -->
+    <string name="smoking_history">Smoking History</string>
+    <string name="quit_attempts">Previous Quit Attempts</string>
+    <string name="triggers">Your Triggers</string>
+    <string name="sleep_setup">Sleep Setup</string>
+    <string name="voice_preferences">Voice Preferences</string>
+    
+    <!-- Common -->
+    <string name="next">Next</string>
+    <string name="back">Back</string>
+    <string name="continue_action">Continue</string>
+    <string name="skip">Skip</string>
+    <string name="finish">Finish</string>
+    
+    <!-- Sleep Mode -->
+    <string name="sleep_mode">Sleep Mode</string>
+    <string name="good_night">Good night, %1$s</string>
+    <string name="begin_sleep_session">Begin Sleep Session</string>
+    <string name="adjust_settings">Adjust Settings</string>
+    <string name="sleep_detected">Sleep Detected</string>
+    <string name="current_stage">Current Stage: %1$s</string>
+    
+    <!-- Emergency -->
+    <string name="craving_alert">CRAVING ALERT</string>
+    <string name="rate_intensity">Rate your craving intensity:</string>
+    <string name="breathing_exercise">5-Min Breathing</string>
+    <string name="guided_meditation">Guided Meditation</string>
+    <string name="crisis_chat">Crisis Chat</string>
+    <string name="call_support">Call Support</string>
+    
+    <!-- Progress -->
+    <string name="progress_title">Progress</string>
+    <string name="health_progress">Health Progress</string>
+    <string name="financial_progress">Financial Progress</string>
+    <string name="total_saved">Total Saved: $%1$.2f</string>
+    <string name="weekly_savings">Weekly Savings: $%1$.0f</string>
+    
+    <!-- Motivational -->
+    <string name="motivation_1">You\'ve got this!</string>
+    <string name="motivation_2">Every smoke-free day is a victory</string>
+    <string name="motivation_3">Your body is healing</string>
+    <string name="motivation_4">You\'re stronger than any craving</string>
+</resources>

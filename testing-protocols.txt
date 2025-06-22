@@ -1,0 +1,507 @@
+# SleepFree Testing Protocols & QA Procedures
+
+## Testing Strategy Overview
+
+### Testing Pyramid Structure
+```
+                Manual Exploratory Testing
+                   /                \
+              Integration Testing    User Acceptance Testing
+                 /              \      /              \
+            Unit Testing    API Testing    Performance Testing
+           /          \        /       \        /          \
+    Code Coverage  Security  Load Testing  Sleep Simulation
+```
+
+### Testing Phases
+1. **Unit Testing** - Individual component validation
+2. **Integration Testing** - Component interaction validation
+3. **System Testing** - End-to-end functionality validation
+4. **User Acceptance Testing** - Real-world usage validation
+5. **Safety Testing** - Sleep and psychological safety validation
+
+## Unit Testing Requirements
+
+### Code Coverage Targets
+```
+Critical Components: 100% coverage
+- Sleep stage detection algorithms
+- Audio delivery system
+- Craving prediction models
+- Security and encryption functions
+
+High Priority: 95% coverage
+- User authentication
+- Data synchronization
+- Suggestion generation
+- Emergency intervention
+
+Standard Components: 80% coverage
+- UI components
+- Settings management
+- Progress tracking
+- Basic utilities
+```
+
+### Unit Test Examples
+```kotlin
+class SleepStageDetectorTest {
+    @Test
+    fun `should detect light sleep from heart rate and movement data`() {
+        // Arrange
+        val heartRateData = listOf(58, 60, 57, 59, 61)
+        val movementData = MovementData(low = true, duration = 900)
+        val detector = SleepStageDetector()
+        
+        // Act
+        val result = detector.detectStage(heartRateData, movementData)
+        
+        // Assert
+        assertEquals(SleepStage.LIGHT_SLEEP, result.stage)
+        assertTrue(result.confidence > 0.8f)
+    }
+    
+    @Test
+    fun `should not suggest during REM sleep`() {
+        // Arrange
+        val remStage = SleepStage.REM_SLEEP
+        val detector = SleepStageDetector()
+        
+        // Act
+        val canSuggest = detector.isOptimalForSuggestions(remStage)
+        
+        // Assert
+        assertFalse(canSuggest)
+    }
+}
+
+class AudioDeliverySystemTest {
+    @Test
+    fun `should deliver audio at whisper volume during light sleep`() {
+        // Arrange
+        val suggestion = createTestSuggestion()
+        val sleepStage = SleepStage.LIGHT_SLEEP
+        val audioSystem = AudioDeliverySystem()
+        
+        // Act
+        val delivery = audioSystem.deliverSuggestion(suggestion, sleepStage)
+        
+        // Assert
+        assertEquals(0.1f, delivery.volume, 0.01f)
+        assertTrue(delivery.delivered)
+        assertEquals(120, delivery.durationSeconds)
+    }
+    
+    @Test
+    fun `should refuse audio delivery during deep sleep`() {
+        // Arrange
+        val suggestion = createTestSuggestion()
+        val sleepStage = SleepStage.DEEP_SLEEP
+        val audioSystem = AudioDeliverySystem()
+        
+        // Act
+        val delivery = audioSystem.deliverSuggestion(suggestion, sleepStage)
+        
+        // Assert
+        assertFalse(delivery.delivered)
+        assertEquals("DEEP_SLEEP_PROTECTION", delivery.refusalReason)
+    }
+}
+```
+
+## Integration Testing Protocols
+
+### Samsung Health Integration Testing
+```kotlin
+class SamsungHealthIntegrationTest {
+    @Test
+    fun `should retrieve real sleep data from Galaxy Watch`() {
+        // Test requires physical Galaxy Watch
+        val healthDataStore = HealthDataStore.getInstance()
+        val sleepDataReader = SleepDataReader(healthDataStore)
+        
+        val sleepSessions = sleepDataReader.getLastNightSleep()
+        
+        assertNotNull(sleepSessions)
+        assertTrue(sleepSessions.duration > 0)
+        assertTrue(sleepSessions.stages.isNotEmpty())
+    }
+    
+    @Test
+    fun `should handle Samsung Health service unavailable`() {
+        // Mock Samsung Health service failure
+        val mockHealthStore = mockk<HealthDataStore>()
+        every { mockHealthStore.isConnected() } returns false
+        
+        val sleepDataReader = SleepDataReader(mockHealthStore)
+        val result = sleepDataReader.getLastNightSleep()
+        
+        assertTrue(result.isFailure)
+        assertEquals("SAMSUNG_HEALTH_UNAVAILABLE", result.errorCode)
+    }
+}
+```
+
+### Firebase Integration Testing
+```kotlin
+class FirebaseIntegrationTest {
+    @Test
+    fun `should sync sleep data to Firestore`() {
+        val sleepSession = createTestSleepSession()
+        val firebaseSync = FirebaseSyncManager()
+        
+        val result = firebaseSync.uploadSleepSession(sleepSession)
+        
+        assertTrue(result.isSuccess)
+        
+        // Verify data in Firestore
+        val retrievedSession = firebaseSync.getSleepSession(sleepSession.id)
+        assertEquals(sleepSession.duration, retrievedSession.duration)
+    }
+    
+    @Test
+    fun `should handle offline sync gracefully`() {
+        // Simulate no internet connection
+        val firebaseSync = FirebaseSyncManager()
+        firebaseSync.setOfflineMode(true)
+        
+        val sleepSession = createTestSleepSession()
+        val result = firebaseSync.uploadSleepSession(sleepSession)
+        
+        assertTrue(result.isQueued)
+        assertEquals(1, firebaseSync.getPendingUploads().size)
+    }
+}
+```
+
+## Sleep Safety Testing
+
+### Sleep Disruption Testing
+```
+Test Case: Volume Level Safety
+Steps:
+1. Set suggestion volume to maximum
+2. Monitor sleep quality scores before/after
+3. Verify volume never exceeds 15% of device maximum
+4. Ensure no user complaints of sleep disruption
+
+Expected Results:
+- Volume automatically capped at 15%
+- Sleep quality degradation <5%
+- Zero reports of awakening from suggestions
+
+Test Case: REM Sleep Protection
+Steps:
+1. Simulate user entering REM sleep
+2. Attempt to deliver suggestion
+3. Verify suggestion is blocked
+4. Confirm no audio output during REM
+
+Expected Results:
+- No suggestions delivered during REM
+- REM sleep duration preserved
+- Natural sleep cycles maintained
+```
+
+### Psychological Safety Testing
+```
+Test Case: Content Safety Review
+Steps:
+1. Review all hypnotic content for harmful suggestions
+2. Test content with diverse user groups
+3. Monitor for negative psychological reactions
+4. Validate against clinical hypnotherapy standards
+
+Expected Results:
+- Zero harmful or traumatic content
+- No reports of psychological distress
+- Content approved by licensed hypnotherapist
+- Compliance with ethical guidelines
+
+Test Case: Emergency Protocols
+Steps:
+1. Test user ability to immediately stop suggestions
+2. Verify emergency wake function works reliably
+3. Test crisis intervention system
+4. Validate professional support referrals
+
+Expected Results:
+- Instant stop functionality <1 second response
+- 100% reliable emergency wake
+- Crisis support available 24/7
+- Professional referrals accessible
+```
+
+## Performance Testing
+
+### Battery Usage Testing
+```
+Test Protocol: Overnight Battery Impact
+Duration: 8-hour sleep session
+Device: Samsung Galaxy S23 with Galaxy Watch 5
+Baseline: Normal sleep without SleepFree
+
+Test Steps:
+1. Charge devices to 100%
+2. Enable SleepFree sleep monitoring
+3. Record battery levels every hour
+4. Compare to baseline sleep session
+5. Repeat for 7 consecutive nights
+
+Acceptance Criteria:
+- Phone battery drain <5% additional
+- Watch battery drain <10% additional
+- No device overheating
+- Stable performance throughout night
+```
+
+### Audio Latency Testing
+```
+Test Protocol: Suggestion Delivery Timing
+Target: <100ms from trigger to audio start
+
+Test Steps:
+1. Simulate optimal suggestion window detected
+2. Measure time to audio delivery start
+3. Test with various Bluetooth headphones
+4. Test with different sleep stages
+5. Verify timing accuracy across device types
+
+Acceptance Criteria:
+- Average latency <100ms
+- 95th percentile latency <200ms
+- No audio dropouts or stutters
+- Consistent performance across devices
+```
+
+### Memory Usage Testing
+```
+Test Protocol: Long-term Memory Stability
+Duration: 7-day continuous operation
+
+Test Steps:
+1. Start SleepFree with fresh app installation
+2. Monitor memory usage every 6 hours
+3. Track heap size and memory leaks
+4. Test with varying user activity levels
+5. Verify garbage collection effectiveness
+
+Acceptance Criteria:
+- Memory usage <256MB sustained
+- No memory leaks detected
+- Stable performance over 7 days
+- Successful garbage collection cycles
+```
+
+## User Acceptance Testing
+
+### Alpha Testing Protocol (50 users, 4 weeks)
+```
+User Profile Requirements:
+- Android users with Galaxy Watch
+- Currently smoking (10+ cigarettes/day)
+- Genuine desire to quit
+- Willing to provide detailed feedback
+
+Testing Objectives:
+1. Validate core app functionality
+2. Test sleep monitoring accuracy
+3. Assess suggestion effectiveness
+4. Identify critical bugs and usability issues
+5. Gather feature requests and improvements
+
+Data Collection:
+- Daily app usage logs
+- Sleep quality surveys
+- Suggestion effectiveness ratings
+- Craving frequency tracking
+- Technical issue reports
+- Feature satisfaction scores
+
+Success Criteria:
+- >80% daily active usage
+- >4.0/5.0 average satisfaction
+- <5 critical bugs reported
+- >70% would recommend to others
+```
+
+### Beta Testing Protocol (500 users, 8 weeks)
+```
+User Segmentation:
+- Segment A: Heavy smokers (20+ cigarettes/day)
+- Segment B: Light smokers (10-20 cigarettes/day)
+- Segment C: Previous quit attempts
+- Segment D: First-time quitters
+
+Testing Focus Areas:
+1. Personalization effectiveness
+2. Long-term engagement
+3. Quit success rates
+4. Premium feature adoption
+5. Customer support needs
+
+Metrics Tracking:
+- User retention curves
+- Quit attempt success rates
+- Craving management effectiveness
+- Sleep quality impact
+- Feature usage patterns
+- Customer support tickets
+
+Success Criteria:
+- >70% 30-day retention
+- >50% quit attempt success at 4 weeks
+- <2% sleep quality degradation
+- >85% satisfaction with personalization
+```
+
+## Automated Testing Infrastructure
+
+### Continuous Integration Pipeline
+```yaml
+# GitHub Actions Workflow
+name: SleepFree CI/CD Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+      - name: Setup Android SDK
+      - name: Run unit tests
+      - name: Generate coverage report
+      - name: Upload coverage to Codecov
+      
+  integration-tests:
+    runs-on: ubuntu-latest
+    needs: unit-tests
+    steps:
+      - name: Setup test environment
+      - name: Run integration tests
+      - name: Test Firebase integration
+      - name: Test Samsung Health APIs
+      
+  ui-tests:
+    runs-on: macos-latest
+    needs: unit-tests
+    steps:
+      - name: Setup Android emulator
+      - name: Run Espresso UI tests
+      - name: Test user flows
+      - name: Generate UI test report
+      
+  performance-tests:
+    runs-on: ubuntu-latest
+    needs: [unit-tests, integration-tests]
+    steps:
+      - name: Run performance benchmarks
+      - name: Test memory usage
+      - name: Test battery simulation
+      - name: Generate performance report
+      
+  security-tests:
+    runs-on: ubuntu-latest
+    needs: unit-tests
+    steps:
+      - name: Run security scans
+      - name: Test data encryption
+      - name: Validate privacy compliance
+      - name: Check for vulnerabilities
+```
+
+### Test Data Management
+```
+Test Data Categories:
+
+1. Sleep Data Simulation
+   - Various sleep patterns (good/poor sleepers)
+   - Different sleep stages and transitions
+   - Realistic biometric data ranges
+   - Edge cases and anomalies
+
+2. User Profile Variations
+   - Different smoking histories
+   - Various trigger patterns
+   - Diverse demographic profiles
+   - Different device configurations
+
+3. Suggestion Content Testing
+   - All content variations
+   - Different voice profiles
+   - Various personalization scenarios
+   - Safety and effectiveness validation
+
+4. Emergency Scenarios
+   - Network connectivity issues
+   - Device hardware failures
+   - Battery critical situations
+   - Medical emergency simulations
+```
+
+## Safety & Compliance Testing
+
+### Medical Device Compliance Testing
+```
+FDA Wellness Device Guidelines:
+- Validate health claims with clinical evidence
+- Test safety across diverse populations
+- Ensure data accuracy and reliability
+- Verify user safety protocols
+
+Testing Requirements:
+1. Clinical efficacy studies
+2. Safety monitoring protocols
+3. Adverse event reporting
+4. User instruction clarity
+5. Professional oversight validation
+```
+
+### Privacy Compliance Testing
+```
+HIPAA Compliance Testing:
+- Data encryption at rest and in transit
+- Access control and authentication
+- Audit logging and monitoring
+- Data breach response procedures
+- User consent and control mechanisms
+
+GDPR Compliance Testing:
+- Right to data portability
+- Right to erasure (be forgotten)
+- Data processing transparency
+- Consent management
+- Cross-border data transfer safeguards
+```
+
+## Test Environment Setup
+
+### Physical Device Requirements
+```
+Minimum Test Device Lab:
+- Samsung Galaxy S22, S23, S24 (latest Android versions)
+- Samsung Galaxy Watch 4, 5, 6
+- Various Bluetooth headphones and earbuds
+- Different Android OEM devices (OnePlus, Pixel, etc.)
+- Tablets for UI scaling validation
+
+Network Conditions:
+- High-speed WiFi
+- 4G/5G cellular
+- Poor connectivity simulation
+- Offline mode testing
+- Network interruption simulation
+```
+
+### Test Data Privacy
+```
+Privacy Protection Measures:
+- All test data anonymized
+- No real user personal information in tests
+- Synthetic data generation for realistic scenarios
+- Secure test environment isolation
+- Regular data purging of test systems
+```
+
+This comprehensive testing strategy ensures SleepFree meets the highest standards for safety, effectiveness, and reliability while protecting user privacy and sleep quality.

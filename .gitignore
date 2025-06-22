@@ -1,0 +1,86 @@
+﻿# SleepFree Project .gitignore
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Android
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Firebase
+/10-Vendors/api-keys/firebase-config.json
+/10-Vendors/api-keys/google-services.json
+
+# Sensitive files
+/10-Vendors/api-keys/
+*.key
+*.pem
+*.p12
+config.properties
+secrets.txt
+
+# Build artifacts
+/01-Development/android-app/app/build/
+/01-Development/android-app/wear/build/
+/01-Development/backend/dist/
+/01-Development/backend/node_modules/
+
+# Audio files (large)
+/05-Content/audio-recordings/*.wav
+/05-Content/audio-recordings/*.mp3
+/05-Content/audio-recordings/*.m4a
+
+# Machine Learning models (large)
+/01-Development/ml-models/*.tflite
+/01-Development/ml-models/*.pb
+/01-Development/ml-models/training-data/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Business sensitive
+/04-Business/financial-models/actual-financials.*
+/04-Business/funding/investor-contacts.*
+/07-Team/hiring/candidate-info/
+
